@@ -1,0 +1,30 @@
+1.Separation of concerns
+Class input
+Class data management (class model) (array list , ... etc)
+Class logic (controller classes) ( mafihosh scanner , scanners meta5da mn el main ka parameters . howa by process ) 
+
+Array list notification and add notification lel list le kol driver w user
+Fe functions bn3mlha 3ashan n test 
+
+
+
+Entity el classes el.fiha  , feha setters w getters 
+Model class  Crud > create read update delete 
+
+Boundary to controller  
+
+Controller class bya5od inputs as parameters msh fare2 m3ah hya gaya mneen
+
+
+Ben2asem el class lw kbeeer 
+
+
+
+Nzaker composition ( object gowa class) 
+
+2.Srp 
+3.Inheritance ( mn3mlsh inheritance wana msh 3yzah)
+4.strategy vs observer
+Msh lazm n3ml el observer zy mahowa mn el slides bl functions. 
+
+5.GIT

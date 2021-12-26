@@ -1,0 +1,119 @@
+// Boundary
+public class MainInterface {
+	private DriverInterface driverUI;
+	private UserInterface userUI;
+
+	public void mainMenu() {
+
+		
+	}
+
+}
+
+// Boundary
+public class DriverInterface {
+	private DriverController driverController = new DriverController();
+	public void showDriverMenu() {
+		// printing
+
+		if(userInput == 5) {
+			boolean status = false;
+			while (status == false) {
+				Scanner sc = new Scanner();
+				int rideId = sc.nextInt();
+				double offer = sc.nextDouble()
+				status = driverController.makeOffer(rideId, offer);
+			}
+		}
+	}
+}
+
+
+// handle logic (controller)
+public class DriverController {
+
+	private OfferModel offerModel = new OfferModel();
+	public boolean makeOffer(int rideId, double offer){
+		/**
+			1. Validation
+			2. Save these info in DB
+		 */
+		 if (offer < 0)
+		 	return false
+		OfferEntity offerEntity = new offerEntity(rideId, offer);
+		offerModel.save(offerEntity);
+	}
+}
+
+public class OfferEntity {
+	private int rideId;
+	private double price;
+	// setters & getters
+
+}
+
+public class OfferModel {
+
+	private ArrayList<OfferEntity> offers = new ArrayList<OfferEntity>();
+
+	public void save(OfferEntity entiry)
+	public void getOffer()
+	public void updateOffer()
+	publiv void deleteOffer()
+
+
+
+
+
+
+
+
+}
+
+
+// contrller
+public class RideController {
+
+	public void requestRide(String source, String destination) {
+		/**
+			1. Validation
+			2. Calculate Distance
+			3. Notify Relative Drivers (within source area)
+			4. Saving Ride in DB
+		 */
+		// Validation
+		IDistanceCalculator distanceCalculator = getDistanceCalculationStrategy()
+		double distance = distanceCalculator.calculateDistance(source, destination);	
+	
+	}
+
+	private void getDistanceCalculationStrategy(){
+		// 
+		return 
+	}
+
+}
+
+public interface IDistanceCalculator {
+
+	public abstract double calculateDistance();
+}
+
+public class GoogleMapsCalculator implements IDistanceCalculator {
+
+	public double calculateDistance(){
+
+	}
+}
+
+public class HarvesineCalculator implements IDistanceCalculator {
+
+	public double calculateDistance(){
+		
+	}
+}
+
+
+
+
+
