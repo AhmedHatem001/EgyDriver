@@ -2,15 +2,15 @@ public class DriverEntity extends User {
   private long nationalID;
   private String licenseNum;
   private float offer;
+  private static int driverID = 0;
 
-  public DriverEntity(String username, String password, int phoneNum, int ID, long nationalID, String licenseNum) {
+  public DriverEntity(String username, String password, int phoneNum, long nationalID, String licenseNum) {
     this.username = username;
     this.password = password;
     this.phoneNum = phoneNum;
-    this.ID = ID;
     this.nationalID = nationalID;
     this.licenseNum = licenseNum;
-    Ride.addDriver(this);
+    driverID++;
   }
 
   void setSource(String source) {
@@ -49,10 +49,6 @@ public class DriverEntity extends User {
     this.phoneNum = phone;
   }
 
-  public void setID(int ID) {
-    this.ID = ID;
-  }
-
   public void setNationalID(Long nationalID) {
     this.nationalID = nationalID;
   }
@@ -73,15 +69,15 @@ public class DriverEntity extends User {
     return this.phoneNum;
   }
 
-  public int getID() {
-    return this.ID;
-  }
-
   public long getNationalID() {
     return this.nationalID;
   }
 
   public String getLicenseNum() {
     return this.licenseNum;
+  }
+
+  public int getID() {
+    return driverID;
   }
 }

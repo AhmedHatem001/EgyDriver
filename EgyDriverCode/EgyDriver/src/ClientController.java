@@ -1,38 +1,41 @@
 public class ClientController {
 
-  private OfferModel offerModel;
+  private Offers offer;
   private ClientEntity clientEntity;
+  private DriverController driver;
 
-  public ClientController(ClientEntity clientEntity, OfferModel offerModel) {
+  public ClientController(ClientEntity clientEntity) {
     this.clientEntity = clientEntity;
-    this.offerModel = offerModel;
+    this.offer = new Offers();
   }
 
   public void requestRide(String source, String destination) {
     clientEntity.setSource(source);
     clientEntity.setDestination(destination);
-    Ride.notifyDriver(clientEntity, source, destination);
+    Ride.notifyDriver(this, source, destination);
   }
 
-  void notifyClient(Driver driver) {
-    System.out.println("Driver " + driver.getUsername() + " has offered: " + driver.getOffer() + "$");
+  public void updateClient(DriverController drivercController, float price, String source, String destination) {
+    DriverEntity driverEntity = drivercController.getDriverEntity();
+    driverEntity.setOffer(price);
+    driverEntity.setSource(source);
+    driverEntity.setDestination(destination);
+    System.out.println("Driver " + driverEntity.getUsername() + " has offered: " + driverEntity.getOffer() + "$");
     System.out.println();
-  }
-
-  public void updateClient(Driver driver, float price, String source, String destination) {
-    driver.setOffer(price);
-    driver.setSource(source);
-    driver.setDestination(destination);
-    this.notifyClient(driver);
-    // System.out.println();
-    // System.out.println("Driver " + driver.getUsername() + " has offered: " +
-    // driver.getOffer() + "$");
-    // System.out.println();
-    offerModel.addOffer(driver);
+    offer.addOffer(drivercController);
     // offers.add(driver);
   }
 
   void listOffers() {
-    offerModel.listOffers();
+    offer.listOffers();
+  }
+
+  void selectOffer(int index) {
+    driver = offer.getOffer(index);
+    driver.offerAccepted(this);
+  }
+
+  ClientEntity getClientEntity() {
+    return clientEntity;
   }
 }

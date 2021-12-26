@@ -2,29 +2,27 @@ import java.util.*;
 
 public class Ride {
 
-  public static ArrayList<Driver> d = new ArrayList<Driver>();
-  List<String> locations = new ArrayList<String>(
-      Arrays.asList("Cairo", "Giza", "Luxor", "Alexandria", "Aswan", "Hurghada", "Ismailia", "Asyut"));
+  public static ArrayList<DriverController> drivers = new ArrayList<DriverController>();
+  // static ArrayList<String> locations = new ArrayList<String>(
+  // Arrays.asList("Cairo", "Giza", "Luxor", "Alexandria", "Aswan", "Hurghada",
+  // "Ismailia", "Asyut"));
 
-  public Ride() {
+  public static void addDriver(DriverController driver) {
+    drivers.add(driver);
   }
 
-  public static void addDriver(Driver driver) {
-    d.add(driver);
-  }
-
-  public static void notifyDriver(ClientEntity clienteEntity, String source, String destination) {
-    for (Driver driver : d) {
-      if (driver.favoriteAreas.contains(source)) {
-        driver.updateDriver(clienteEntity, source, destination);
+  public static void notifyDriver(ClientController clientController, String source, String destination) {
+    for (DriverController driver : drivers) {
+      if (driver.getFavoriteAreas().contains(source)) {
+        driver.updateDriver(clientController, source, destination);
       }
     }
     // System.out.println("No drivers available");
   }
 
-  public void listLocations() {
-    for (int i = 0; i < locations.size(); i++) {
-      System.out.printf("Location %d : %s \n", i + 1, locations.get(i));
-    }
-  }
+  // public static void listLocations() {
+  // System.out.println("The available locations: ");
+  // for (int i = 0; i < locations.size(); i++) {
+  // System.out.print((i + 1) + ". " + locations.get(i) + " ");
+  // }
 }

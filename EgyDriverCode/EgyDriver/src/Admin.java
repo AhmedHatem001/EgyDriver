@@ -1,29 +1,28 @@
+import java.sql.Driver;
 import java.util.*;
 
 public class Admin {
-  List<Driver> registeredDrivers = new ArrayList<Driver>();
+  private static ArrayList<DriverController> acceptedDrivers = new ArrayList<DriverController>();
 
-  public Admin() {
-
+  public static void addDriver(DriverEntity driverEntity) {
+    DriverController driverController = new DriverController(driverEntity);
+    acceptedDrivers.add(driverController);
   }
 
-  public void addDriver(Driver driver) {
-    registeredDrivers.add(driver);
-
-  }
-
-  public void listRegisteredDriver() {
-    for (int i = 0; i < registeredDrivers.size(); i++) {
-      // System.out.println("Driver " + i + ": UserName: " +
-      // registeredDrivers.get(i).getUsername() + ", Drivers License: "
-      // + registeredDrivers.get(i).getLicenseNum());
-      System.out.printf("Driver %d username: %s, License: %s \n", i + 1, registeredDrivers.get(i).getUsername(),
-          registeredDrivers.get(i).getLicenseNum());
+  public static void printAccepptedDriverList() {
+    for (int i = 0; i < acceptedDrivers.size(); i++) {
+      DriverEntity driver = acceptedDrivers.get(i).getDriverEntity();
+      System.out.println("Driver " + (i + 1) + ". Name: " + driver.getUsername()
+          + ", Driver's License: " + driver.getLicenseNum());
     }
   }
 
-  public Driver accept(int i) {
-    return registeredDrivers.get(i);
+  static ArrayList<DriverController> getAccpetedDrivers() {
+    return acceptedDrivers;
+  }
+
+  static void addLocation(String location) {
+    Locations.addLocation(location);
   }
 
 }

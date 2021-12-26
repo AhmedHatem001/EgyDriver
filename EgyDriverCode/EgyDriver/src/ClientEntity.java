@@ -1,10 +1,11 @@
 public class ClientEntity extends User {
+  private static int clientID = 0;
 
-  public ClientEntity(String username, String password, int phoneNum, int ID) {
+  public ClientEntity(String username, String password, int phoneNum) {
     this.username = username;
     this.password = password;
     this.phoneNum = phoneNum;
-    this.ID = ID;
+    clientID++;
   }
 
   // Ride ride = new Ride();
@@ -48,11 +49,7 @@ public class ClientEntity extends User {
     return this.phoneNum;
   }
 
-  public void setID(int ID) {
-    this.ID = ID;
-  }
-
   public int getID() {
-    return this.ID;
+    return clientID;
   }
 }
