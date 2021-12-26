@@ -30,13 +30,14 @@ public class DriverController {
     client = clientController.getClientEntity();
     System.out.println(" ");
     System.out
-        .println(
-            "Client " + client.getUsername() + " has requested a ride from " + source + " to " + destination);
+        .println("Driver " + this.getDriverEntity().getUsername() +
+            ", Client " + client.getUsername() + " has requested a ride from " + source + " to " + destination);
     System.out.println(" ");
     ridesList.add(clientController);
   }
 
   public void offer(ClientController clientController, float price, String source, String destination) {
+    clientController.addOffer(this);
     clientController.updateClient(this, price, source, destination);
   }
 

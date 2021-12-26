@@ -9,6 +9,7 @@ public class Locations {
     for (int i = 0; i < locations.size(); i++) {
       System.out.print((i + 1) + ". " + locations.get(i) + " ");
     }
+    System.out.println();
   }
 
   static void addLocation(String location) {

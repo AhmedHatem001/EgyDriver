@@ -21,8 +21,6 @@ public class DriverInterface {
     password = in.nextLine();
     phoneNum = in.nextInt();
     in.nextLine();
-    ID = in.nextInt();
-    in.nextLine();
     nationalID = in.nextInt();
     in.nextLine();
     licenseNum = in.nextLine();
@@ -40,13 +38,20 @@ public class DriverInterface {
       // in.nextLine();
       String Username = in.nextLine();
       String Password = in.nextLine();
-      for (int i = 0; i < drivers.size(); i++) {
-        if (drivers.get(i).getDriverEntity().getUsername().equals(Username)
-            && drivers.get(i).getDriverEntity().getPassword().equals(Password)) {
-          System.out.println("Login Successful");
-          driverController = drivers.get(i);
-          break;
+      for (int i = 0; i <= drivers.size(); i++) {
+        try {
+          if (drivers.get(i).getDriverEntity().getUsername().equals(Username)
+              && drivers.get(i).getDriverEntity().getPassword().equals(Password)) {
+            System.out.println("Login Successful");
+            System.out.println();
+            driverController = drivers.get(i);
+            break;
+          }
+        } catch (Exception e) {
+          System.out.println("Wrong Login info, please try again");
+          LoginInterface.loginMenu();
         }
+
       }
       boolean flag = true;
       while (flag) {

@@ -22,7 +22,6 @@ public class ClientInterface {
     username = in.nextLine();
     password = in.nextLine();
     phoneNum = in.nextInt();
-    ID = in.nextInt();
     in.nextLine();
     ClientEntity client = new ClientEntity(username, password, phoneNum);
     RegistrationForm.addRegisteredClients(client);
@@ -37,15 +36,16 @@ public class ClientInterface {
     int i;
     ArrayList<ClientEntity> registeredClients = RegistrationForm.getRegisteredClientsList();
     for (i = 0; i <= registeredClients.size(); i++) {
-      if (registeredClients.get(i).getUsername().equals(Username)
-          && registeredClients.get(i).getPassword().equals(Password)) {
-        System.out.println("Login Successful");
-        System.out.println(" ");
-        clientController = new ClientController(registeredClients.get(i));
-        break;
-      }
-      if (i == registeredClients.size()) {
-        System.out.println("Wrong Login");
+      try {
+        if (registeredClients.get(i).getUsername().equals(Username)
+            && registeredClients.get(i).getPassword().equals(Password)) {
+          System.out.println("Login Successful");
+          System.out.println(" ");
+          clientController = new ClientController(registeredClients.get(i));
+          break;
+        }
+      } catch (Exception e) {
+        System.out.println("Wrong Login info, please try again");
         LoginInterface.loginMenu();
       }
     }
@@ -74,7 +74,11 @@ public class ClientInterface {
       }
 
       else if (decision == 2) {
-        clientController.listOffers();
+        if (clientController.getOffersList().isEmpty()) {
+          clientController.listOffers();
+          System.out.println("you have not recieved any offers yet!");
+        } else
+          clientController.listOffers();
       }
 
       else if (decision == 3) {

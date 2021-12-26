@@ -4,8 +4,8 @@ public class Offers {
   public ArrayList<DriverController> offers = new ArrayList<DriverController>();
   private DriverEntity driverEntity;
 
-  void addOffer(DriverController drivercController) {
-    offers.add(drivercController);
+  void addOffer(DriverController driverController) {
+    offers.add(driverController);
   }
 
   public void listOffers() {
@@ -19,5 +19,9 @@ public class Offers {
 
   DriverController getOffer(int index) {
     return offers.get(index);
+  }
+
+  ArrayList<DriverController> getOffersList() {
+    return offers;
   }
 }
