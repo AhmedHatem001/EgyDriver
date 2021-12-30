@@ -1,8 +1,10 @@
 public class DriverEntity extends User {
   private long nationalID;
   private String licenseNum;
-  private float offer;
+  // private float offer;
   private static int driverID = 0;
+  private boolean isAccepted;
+  private float balance;
 
   public DriverEntity(String username, String password, int phoneNum, long nationalID, String licenseNum) {
     this.username = username;
@@ -10,43 +12,9 @@ public class DriverEntity extends User {
     this.phoneNum = phoneNum;
     this.nationalID = nationalID;
     this.licenseNum = licenseNum;
+    isAccepted = false;
+    balance = 0;
     driverID++;
-  }
-
-  void setSource(String source) {
-    this.source = source;
-  }
-
-  public String getSource() {
-    return source;
-  }
-
-  public void setDestination(String destination) {
-    this.destination = destination;
-  }
-
-  public String getDestination() {
-    return destination;
-  }
-
-  public void setOffer(float offer) {
-    this.offer = offer;
-  }
-
-  public float getOffer() {
-    return offer;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public void setPassword(String pass) {
-    this.password = pass;
-  }
-
-  public void setPhoneNum(int phone) {
-    this.phoneNum = phone;
   }
 
   public void setNationalID(Long nationalID) {
@@ -55,18 +23,6 @@ public class DriverEntity extends User {
 
   public void setLicenseNum(String licenseNum) {
     this.licenseNum = licenseNum;
-  }
-
-  public String getUsername() {
-    return username;
-  }
-
-  public String getPassword() {
-    return this.password;
-  }
-
-  public int getPhoneNum() {
-    return this.phoneNum;
   }
 
   public long getNationalID() {
@@ -79,5 +35,21 @@ public class DriverEntity extends User {
 
   public int getID() {
     return driverID;
+  }
+
+  void setIsAccept() {
+    isAccepted = true;
+  }
+
+  public boolean isAccepted() {
+    return isAccepted;
+  }
+
+  public void setBalance(float price) {
+    balance += price;
+  }
+
+  public float getBalance() {
+    return balance;
   }
 }

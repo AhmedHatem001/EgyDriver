@@ -24,7 +24,8 @@ public class ClientInterface {
     phoneNum = in.nextInt();
     in.nextLine();
     ClientEntity client = new ClientEntity(username, password, phoneNum);
-    RegistrationForm.addRegisteredClients(client);
+    clientController = new ClientController(client);
+    ClientController.addRegisteredClients(clientController);
   }
 
   // Client login menu
@@ -34,72 +35,100 @@ public class ClientInterface {
     String Username = in.nextLine();
     String Password = in.nextLine();
     int i;
-    ArrayList<ClientEntity> registeredClients = RegistrationForm.getRegisteredClientsList();
+    ArrayList<ClientController> registeredClients = ClientController.getRegisteredClientsList();
     for (i = 0; i <= registeredClients.size(); i++) {
       try {
-        if (registeredClients.get(i).getUsername().equals(Username)
-            && registeredClients.get(i).getPassword().equals(Password)) {
+        if (registeredClients.get(i).getClientEntity().getUsername().equals(Username)
+            && registeredClients.get(i).getClientEntity().getPassword().equals(Password)) {
           System.out.println("Login Successful");
           System.out.println(" ");
-          clientController = new ClientController(registeredClients.get(i));
+          clientController = registeredClients.get(i);
           break;
         }
       } catch (Exception e) {
+        System.out.println();
         System.out.println("Wrong Login info, please try again");
         LoginInterface.loginMenu();
       }
     }
     boolean flag = true;
-    while (flag) {
-      System.out.println("Please select an option");
-      System.out.println("1- Request Ride");
-      System.out.println("2- List Offers");
-      System.out.println("3- Select Offer");
-      System.out.println("4- logout");
-      int decision = in.nextInt();
-      in.nextLine();
-      if (decision == 1) {
-        Locations.listLocations();
-        System.out.println("Please enter source and destination");
-        boolean flap = true;
-        while (flap) {
-          System.out.print("source: ");
-          source = in.nextLine();
-          System.out.print("destination: ");
-          destination = in.nextLine();
-          if (source != destination)
-            flap = false;
-        }
-        clientController.requestRide(source, destination);
-      }
-
-      else if (decision == 2) {
-        if (clientController.getOffersList().isEmpty()) {
-          clientController.listOffers();
-          System.out.println("you have not recieved any offers yet!");
-        } else
-          clientController.listOffers();
-      }
-
-      else if (decision == 3) {
-        System.out.println("Select 0 if you don't want to select any offer");
-        System.out.println("Insert Offer number: ");
-        decision = in.nextInt();
+    try {
+      while (flag) {
+        System.out.println("Please select an option");
+        System.out.println("1- Request ride");
+        System.out.println("2- List offers");
+        System.out.println("3- Select offer");
+        System.out.println("4- List rides history");
+        System.out.println("5- Rate ride");
+        System.out.println("6- logout");
+        int decision = in.nextInt();
         in.nextLine();
-        if (decision == 0)
-          continue;
-        else
-          clientController.selectOffer(decision);
-      }
+        if (decision == 1) {
+          Locations.listLocations();
+          System.out.println("Please enter source and destination");
+          boolean flap = true;
+          while (flap) {
+            System.out.print("source: ");
+            source = in.nextLine();
+            System.out.print("destination: ");
+            destination = in.nextLine();
+            if (source != destination)
+              flap = false;
+            else
+              System.out.println("Source can not be the same as destination!");
+          }
+          clientController.requestRide(source, destination);
+        }
 
-      else if (decision == 4) {
-        LogoutInterface.logoutMenu();
-      }
+        else if (decision == 2) {
+          if (clientController.getOffersList().isEmpty()) {
+            System.out.println("you have not recieved any offers yet");
+          } else {
+            clientController.listOffers();
+          }
+        }
 
-      else {
-        System.out.println("error");
-        LogoutInterface.logoutMenu();
+        else if (decision == 3) {
+          System.out.println("Select 0 if you don't want to select any offer");
+          System.out.println("Insert Offer number: ");
+          int num = in.nextInt();
+          in.nextLine();
+          if (num == 0)
+            continue;
+          else
+            clientController.acceptOffer(num);
+        }
+
+        else if (decision == 4) {
+          clientController.listRidesHistory();
+        }
+
+        else if (decision == 5) {
+          System.out.println();
+          System.out.println("Please select which Ride you would like to rate");
+          int num = in.nextInt();
+          in.nextLine();
+          clientController.getRide(num);
+          System.out.println("insert Rating: ");
+          int rate = in.nextInt();
+          in.nextLine();
+          clientController.rateRide(rate);
+        }
+
+        else if (decision == 6) {
+          LogoutInterface.logoutMenu();
+        }
+
+        else {
+          System.out.println("error");
+          LogoutInterface.logoutMenu();
+        }
       }
+    } catch (Exception e) {
+      System.out.println();
+      System.out.println("Wrong input, please try again");
+      clientLoginMenu();
     }
+
   }
 }
