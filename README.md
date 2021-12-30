@@ -69,7 +69,7 @@ Editor preferences are available in the [editor config](https://reponame/blob/ma
 
 ## Creators
 
-**Creator 1**
+
 1. Khalid Ibrahim Shawki
   - <https://github.com/KShawki>
 2. Ahmed Hatem
