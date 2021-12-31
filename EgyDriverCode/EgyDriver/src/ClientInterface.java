@@ -14,6 +14,8 @@ public class ClientInterface {
   protected String licenseNum;
   protected String source;
   protected String destination;
+  protected CalcDistTime strategy;
+  protected static int count = 0;
   protected Scanner in = new Scanner(System.in);
 
   // Client registration menu
@@ -76,6 +78,16 @@ public class ClientInterface {
               flap = false;
             else
               System.out.println("Source can not be the same as destination!");
+          }
+          count++;
+          System.out.println("");
+          if (count < 2) {
+            strategy = new DistanceMatrixAPI();
+            System.out.println(strategy.getData(source, destination));
+          } else {
+            strategy = new HarvesineCalc();
+            System.out.println("Distance: " + strategy.getData(source, destination) + " K.M");
+            System.out.println("time for arrival: " + strategy.getETA() + " minutes");
           }
           clientController.requestRide(source, destination);
         }

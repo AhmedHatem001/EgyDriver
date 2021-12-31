@@ -13,8 +13,4 @@ public class Locations {
     System.out.println();
   }
 
-  static void addLocation(String location) {
-    locations.add(location);
-  }
-
 }

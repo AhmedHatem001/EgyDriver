@@ -3,9 +3,7 @@ import java.util.*;
 public class LoginInterface {
 
   static int currentUser;
-  // public static Admin admin = new Admin();
   public static Scanner in = new Scanner(System.in);
-  // public static Ride ride = new Ride();
 
   public static void loginMenu() {
     ClientInterface clientInterface = new ClientInterface();
@@ -27,7 +25,6 @@ public class LoginInterface {
       } else if (cha == 3) {
         AdminInterface.adminMenu();
       } else if (cha == 4) {
-        // System.exit(0);
         loop2 = false;
         LogoutInterface.logoutMenu();
       } else {

@@ -1,7 +1,6 @@
 public class DriverEntity extends User {
   private long nationalID;
   private String licenseNum;
-  // private float offer;
   private static int driverID = 0;
   private boolean isAccepted;
   private float balance;

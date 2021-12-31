@@ -1,8 +1,6 @@
 import java.util.*;
 
 public class RidesHistory {
-  // private ClientController clientController;
-  // private DriverController driverController;
   private static float price;
   private static String source;
   private static String destination;
@@ -45,7 +43,6 @@ public class RidesHistory {
               if (c.getRide().isCompeleted() == false)
                 System.out.println(", State: " + "Not finished");
               else {
-                // System.out.println(", State: " + "Finished");
                 if (c.getRide().getRate() == 0)
                   System.out.println(", Rate: " + "Not Rated yet.");
                 else

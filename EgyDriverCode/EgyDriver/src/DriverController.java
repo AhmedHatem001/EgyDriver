@@ -3,7 +3,6 @@ import java.util.*;
 public class DriverController {
 
   private ArrayList<Ride> ridesList = new ArrayList<Ride>();
-  // private ArrayList<RidesHistory> rideHistory = new ArrayList<RidesHistory>();
   private FavoriteAreas favoriteAreas;
   private DriverEntity driverEntity;
   private ClientEntity client;
@@ -66,7 +65,6 @@ public class DriverController {
     System.out
         .println("Driver " + this.getDriverEntity().getUsername() +
             ", Client " + client.getUsername() + " has requested a ride from " + source + " to " + destination);
-    // ridesList.add(clientController);
   }
 
   public void makeOffer(ClientController clientController, float price, String source, String destination) {

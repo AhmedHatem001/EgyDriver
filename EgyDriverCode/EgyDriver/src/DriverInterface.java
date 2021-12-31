@@ -5,15 +5,15 @@ import java.util.*;
 public class DriverInterface {
 
   // RegistrationForm registrationForm = new RegistrationForm();
-  DriverController driverController;
-  int number;
-  String username;
-  String password;
-  int phoneNum;
-  int ID;
-  long nationalID;
-  String licenseNum;
-  Scanner in = new Scanner(System.in);
+  protected DriverController driverController;
+  protected int number;
+  protected String username;
+  protected String password;
+  protected int phoneNum;
+  protected int ID;
+  protected long nationalID;
+  protected String licenseNum;
+  protected Scanner in = new Scanner(System.in);
 
   void drivertRegistrationMenu() {
     System.out.println(
@@ -91,7 +91,6 @@ public class DriverInterface {
         else if (decision == 3) {
           System.out.println("Favorite Areas:");
           driverController.listFavoriteAreas();
-          // System.out.println();
           System.out.println("Please select an area to remove(int)");
           int loc;
           loc = in.nextInt();
