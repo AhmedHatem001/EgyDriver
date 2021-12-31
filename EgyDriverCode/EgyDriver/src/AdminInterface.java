@@ -20,12 +20,12 @@ public class AdminInterface {
         System.out.println("there are " + drivers.size() + " registered Drivers");
         DriverController.printRegisteredDriversList();
       } else if (cha == 2) {
-        System.out.println("Enter the number of the Driver you wish to accept: ");
+        System.out.println("Enter the number of the Driver you wish to accept(int): ");
         num = in.nextInt();
         in.nextLine();
         Admin.acceptDriver(num);
       } else if (cha == 3) {
-        System.out.println("Enter the number of the Driver you wish to remove: ");
+        System.out.println("Enter the number of the Driver you wish to remove(int): ");
         num = in.nextInt();
         in.nextLine();
         Admin.removeDriver(num);

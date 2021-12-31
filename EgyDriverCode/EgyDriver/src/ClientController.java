@@ -13,15 +13,11 @@ public class ClientController {
 
   public ClientController(ClientEntity clientEntity) {
     this.clientEntity = clientEntity;
-    // offer = new Offers();
   }
 
   public void requestRide(String source, String destination) {
-    // clientEntity.setSource(source);
-    // clientEntity.setDestination(destination);
     ride = new Ride(this, source, destination);
     this.addRide(ride);
-    // ride.notifyDriver(this, source, destination);
   }
 
   public void updateClient(DriverController driverController, float price, String source, String destination) {
@@ -34,10 +30,6 @@ public class ClientController {
     offers.add(offer);
   }
 
-  // void addOffer(DriverController driverController) {
-  // offer.addOffer(driverController);
-  // }
-
   public void listOffers() {
     System.out.println();
     for (int i = 0; i < offers.size(); i++) {
@@ -49,36 +41,36 @@ public class ClientController {
     System.out.println();
   }
 
-  ArrayList<Offer> getOffersList() {
+  public ArrayList<Offer> getOffersList() {
     return offers;
   }
 
-  void acceptOffer(int index) {
+  public void acceptOffer(int index) {
     driverController = offers.get(index - 1).getDriverController();
     driverController.offerAccepted(this, offers.get(index - 1));
   }
 
-  void addRide(Ride ride) {
+  public void addRide(Ride ride) {
     ridesList.add(ride);
   }
 
-  Ride getRide(int index) {
+  public Ride getRide(int index) {
     selectedRide = ridesList.get(index - 1);
     return ridesList.get(index - 1);
   }
 
-  void rateRide(int rate) {
+  public void rateRide(int rate) {
     if (selectedRide.isCompeleted() == false)
       System.out.println("The current Ride is not finished yet");
     else
       selectedRide.setRate(rate);
   }
 
-  void listRidesHistory() {
+  public void listRidesHistory() {
     RidesHistory.listRideHistory(this);
   }
 
-  ClientEntity getClientEntity() {
+  public ClientEntity getClientEntity() {
     return clientEntity;
   }
 

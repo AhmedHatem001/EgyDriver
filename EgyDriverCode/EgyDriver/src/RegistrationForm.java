@@ -9,7 +9,7 @@ public class RegistrationForm {
     int number;
     Scanner in = new Scanner(System.in);
 
-    System.out.println("Please select which select which type of registration do you want");
+    System.out.println("Please select which select which type of registration do you want(int)");
 
     boolean loop = true;
 

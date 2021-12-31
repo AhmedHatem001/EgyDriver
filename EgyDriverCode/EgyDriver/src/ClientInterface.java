@@ -5,19 +5,19 @@ import javax.xml.transform.Source;
 public class ClientInterface {
 
   // RegistrationForm registrationForm = new RegistrationForm();
-  ClientController clientController;
-  String username;
-  String password;
-  int phoneNum;
-  int ID;
-  long nationalID;
-  String licenseNum;
-  String source;
-  String destination;
-  Scanner in = new Scanner(System.in);
+  protected ClientController clientController;
+  protected String username;
+  protected String password;
+  protected int phoneNum;
+  protected int ID;
+  protected long nationalID;
+  protected String licenseNum;
+  protected String source;
+  protected String destination;
+  protected Scanner in = new Scanner(System.in);
 
   // Client registration menu
-  void clientRegistrationMenu() {
+  public void clientRegistrationMenu() {
     System.out.println("Please enter your Username(String), Password(String), Phone number(Int)");
     username = in.nextLine();
     password = in.nextLine();
@@ -29,7 +29,7 @@ public class ClientInterface {
   }
 
   // Client login menu
-  void clientLoginMenu() {
+  public void clientLoginMenu() {
     System.out.println("Please enter your username and password");
     // RegistrationForm registrationForm = new RegistrationForm();
     String Username = in.nextLine();
@@ -65,7 +65,7 @@ public class ClientInterface {
         in.nextLine();
         if (decision == 1) {
           Locations.listLocations();
-          System.out.println("Please enter source and destination");
+          System.out.println("Please enter source and destination(string)");
           boolean flap = true;
           while (flap) {
             System.out.print("source: ");
@@ -105,7 +105,7 @@ public class ClientInterface {
 
         else if (decision == 5) {
           System.out.println();
-          System.out.println("Please select which Ride you would like to rate");
+          System.out.println("Please select which Ride you would like to rate(int)");
           int num = in.nextInt();
           in.nextLine();
           clientController.getRide(num);

@@ -82,7 +82,7 @@ public class DriverInterface {
           System.out.println("These are the available areas: ");
           Locations.listLocations();
           System.out.println();
-          System.out.println("Please select an area ");
+          System.out.println("Please select an area(string)");
           String loc;
           loc = in.nextLine();
           driverController.addFavoriteArea(loc);
@@ -92,7 +92,7 @@ public class DriverInterface {
           System.out.println("Favorite Areas:");
           driverController.listFavoriteAreas();
           // System.out.println();
-          System.out.println("Please select an area to remove ");
+          System.out.println("Please select an area to remove(int)");
           int loc;
           loc = in.nextInt();
           in.nextLine();
@@ -105,7 +105,7 @@ public class DriverInterface {
 
         else if (decision == 5) {
           System.out.println();
-          System.out.println("Select which client do you want to offer ride");
+          System.out.println("Select which client do you want to offer ride(int)");
           int user = in.nextInt();
           in.nextLine();
           if (driverController.selectClient(user).getRide().isOffered() == true)
@@ -123,7 +123,7 @@ public class DriverInterface {
 
         else if (decision == 6) {
           System.out.println();
-          System.out.println("Select which client do you want to end ride");
+          System.out.println("Select which client do you want to end ride(int)");
           int user = in.nextInt();
           in.nextLine();
           if (driverController.selectClient(user).getRide().isCompeleted() == true)

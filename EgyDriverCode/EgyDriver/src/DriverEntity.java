@@ -17,14 +17,6 @@ public class DriverEntity extends User {
     driverID++;
   }
 
-  public void setNationalID(Long nationalID) {
-    this.nationalID = nationalID;
-  }
-
-  public void setLicenseNum(String licenseNum) {
-    this.licenseNum = licenseNum;
-  }
-
   public long getNationalID() {
     return this.nationalID;
   }
